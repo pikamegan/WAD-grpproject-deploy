@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS heroku_b38e5f4072cda38;
-CREATE DATABASE heroku_b38e5f4072cda38;
+
 use heroku_b38e5f4072cda38;
 --
 -- Table structure for table `gender`
