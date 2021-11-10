@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS wad2g5t2intern;
-CREATE DATABASE wad2g5t2intern;
-use wad2g5t2intern;
+DROP DATABASE IF EXISTS heroku_b38e5f4072cda38;
+CREATE DATABASE heroku_b38e5f4072cda38;
+use heroku_b38e5f4072cda38;
 --
 -- Table structure for table `gender`
 --
