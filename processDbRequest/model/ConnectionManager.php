@@ -12,7 +12,7 @@ class ConnectionManager
         $db = substr($url["path"], 1);
 
         $dbanfang = 'mysql:host=' . $server . ';dbname=' . $db;
-        $pdoObject = new PDO($dbanfang, $dbuser, $dbpassword);
+        $pdoObject = new PDO($dbanfang, $username, $password);
 
         //$port = '3306';
 
