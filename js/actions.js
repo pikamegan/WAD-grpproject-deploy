@@ -503,7 +503,7 @@ function getAllReviews(companyId) {
                 let criteria5 = posts[i].criteria5
                 let criteria6 = posts[i].criteria6
 
-                let postDate = posts[i].postDateTime
+                let postDate = posts[i].post_date_time
                 let postYear = (postDate.slice(0, 4))
                 let postMonth = (postDate.slice(5, 7)) - 1 // minus 1 due to months starting from 0
                 let postDay = (postDate.slice(8, 10))
