@@ -1,6 +1,7 @@
 <?php
 class ConnectionManager
 {
+    
 
     public function getConnection()
     {
