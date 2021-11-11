@@ -11,7 +11,8 @@ class ConnectionManager
         $password = $url["pass"];
         $db = substr($url["path"], 1);
 
-        $conn = new mysqli($server, $username, $password, $db);
+        $dbanfang = 'mysql:host=' . $server . ';dbname=' . $db;
+        $pdoObject = new PDO($dbanfang, $dbuser, $dbpassword);
 
         //$port = '3306';
 
@@ -21,7 +22,7 @@ class ConnectionManager
 //             $username,
 //             $password);
 
-//         $pdoObject->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         $pdoObject->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // if fail, exception will be thrown
 
         // this dont work
@@ -29,7 +30,7 @@ class ConnectionManager
 
 
         // Return connection object
-        return $conn; // PDO object (containing MySQL connection info)
+        return $pdoObject; // PDO object (containing MySQL connection info)
     }
 
 }
