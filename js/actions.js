@@ -463,7 +463,7 @@ function getAllCompanies() {
 
         })
         .catch(error => {
-            this.errorMessage = error.message
+            console.log(error)
         });
 }
 
