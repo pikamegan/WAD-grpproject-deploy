@@ -5,15 +5,29 @@ class ConnectionManager
 
     public function getConnection()
     {
-        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+        $url = getenv('JAWSDB_URL');
+        $dbparts = parse_url($url);
 
-        $server = $url["host"];
-        $username = $url["user"];
-        $password = $url["pass"];
-        $db = substr($url["path"], 1);
-
-        $dbanfang = 'mysql:host=' . $server . ';dbname=' . $db;
-        $pdoObject = new PDO($dbanfang, $username, $password);
+        $hostname = $dbparts['host'];
+        $username = $dbparts['user'];
+        $password = $dbparts['pass'];
+        $database = ltrim($dbparts['path'],'/');
+        
+        // for cleardb
+        //$dbanfang = 'mysql:host=' . $server . ';dbname=' . $db;
+        //$pdoObject = new PDO($dbanfang, $username, $password);
+        
+        try {
+            $conn = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connected successfully";
+            return $conn;
+        }
+        catch(PDOException $e)
+        {
+            echo "Connection failed: " . $e->getMessage();
+        }
 
         //$port = '3306';
 
@@ -23,7 +37,7 @@ class ConnectionManager
 //             $username,
 //             $password);
 
-         $pdoObject->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         //$pdoObject->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // if fail, exception will be thrown
 
         // this dont work
@@ -31,7 +45,7 @@ class ConnectionManager
 
 
         // Return connection object
-        return $pdoObject; // PDO object (containing MySQL connection info)
+        //return $pdoObject; // PDO object (containing MySQL connection info)
     }
 
 }
