@@ -344,6 +344,7 @@ function loadCompanyPage() {
     })
         .then(response => {
             this.allCompanies = response.data
+            console.log(this.allCompanies)
             let companyName = document.getElementsByClassName("companyName")
             let nameStr = "Company Name"
 
@@ -449,6 +450,7 @@ function getAllCompanies() {
     })
         .then(response => {
             this.allCompanies = response.data
+            console.log(this.allCompanies)
             var companyList = document.getElementById("company")
             let str = ""
             for (company of this.allCompanies) {
@@ -478,7 +480,7 @@ function getAllReviews(companyId) {
     })
         .then(response => {
             this.posts = response.data
-
+            console.log(this.posts)
             let reviewStr = ``
 
             let companyReviewNum = document.getElementById("companyReviewNum")
